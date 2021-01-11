@@ -21,6 +21,7 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
+
   "husky": {
     "hooks": {
       "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
