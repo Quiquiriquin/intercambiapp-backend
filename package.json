@@ -21,6 +21,12 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "pre-push": "npm run test"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
