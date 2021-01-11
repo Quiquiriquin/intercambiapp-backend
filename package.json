@@ -8,7 +8,7 @@
     "start": "nodemon --exec babel-node app.js",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "precommit": "lint-staged"
+    "pre-commit": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +24,10 @@
   "husky": {
     "hooks": {
       "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-    "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-    "post-applypatch": "echo \"[Husky] post-applypatch\"",
-    "pre-commit": "echo \"[Husky] pre-commit\"",
-      "pre-push": "npm run test"
+      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+      "post-applypatch": "echo \"[Husky] post-applypatch\"",
+      "pre-commit": "echo \"[Husky] pre-commit\"",
+      "pre-push": "echo \"[Husky] pre-commit\""
     }
   },
   "lint-staged": {
