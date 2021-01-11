@@ -23,9 +23,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test",
+      "pre-commit": "echo [Husky] pre-commit && lint-staged && git add -A .",
       "pre-push": "npm run test"
     }
+  },
+  "lint-staged": {
+    "*": "prettier --write"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
