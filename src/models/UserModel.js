@@ -21,7 +21,11 @@ export default (sequelize, DataTypes) => {
     },
   });
 
-  User.associate = (models) => {};
+  User.associate = (models) => {
+    User.hasMany(models.Exchange, {
+      foreignKey: "idUser",
+    });
+  };
 
   return User;
 };

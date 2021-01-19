@@ -2,6 +2,7 @@ import { Router } from "express";
 import userController from "../controllers/UserController";
 import bcrypt from "bcrypt";
 import { findOne } from "../utils/ModelUtils";
+import { createTokens } from "../utils/tokenUtils";
 
 const router = Router();
 
@@ -24,7 +25,7 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await userController.loginUser({ email });
-
+    console.log(user);
     if (!user) {
       res.status(204).send("Usuario o contraseña incorrecta");
     }
@@ -34,8 +35,17 @@ router.post("/login", async (req, res) => {
     if (!samePassword) {
       res.status(204).send("Usuario o contraseña incorrectos");
     }
+    console.log(process.env.SECRET);
+    const [token, refreshToken] = await createTokens(
+      user,
+      process.env.SECRET,
+      process.env.SECRET2
+    );
+
     res.status(200).send({
       usuario: user,
+      token,
+      refreshToken,
     });
   } catch (e) {
     return e;
