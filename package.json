@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node app.js",
-    "web": "node app.js",
-    "lint": "eslint ./",
-    "lint:fix": "eslint ./ --fix",
-    "pre-commit": "lint-staged"
+    "web": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -32,15 +29,6 @@
     "sequelize": "^6.3.5",
     "shortid": "^2.2.16"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "echo \"[Husky] pre-commit\""
-    }
-  },
-  "lint-staged": {
-    "*.js": "prettier --write"
-  },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -52,7 +40,6 @@
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
-    "husky": "^4.3.7",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
   },
