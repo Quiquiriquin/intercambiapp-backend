@@ -77,3 +77,8 @@ export const findLastElementOfModel = async (model, options) => {
 export const findAllDifferent = async (model, field) => {
   return await models[model].aggregate(field, "DISTINCT", { plain: false });
 };
+
+export const deleteModel = async (model, id) => {
+  const aux = await findByPk(model, id);
+  return aux.destroy();
+};

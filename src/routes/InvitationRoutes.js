@@ -13,7 +13,7 @@ router.get("/friends/:idUser", async (req, res) => {
     console.log(exchanges);
     exchanges.forEach((exc, index) => {
       exc.Invitations.forEach((inv) => {
-        if (!invitations.includes(inv.email)) {
+        if (invitations.findIndex((elem) => elem.email === inv.email) === -1) {
           invitations.push({
             ...inv.dataValues,
           });

@@ -4,12 +4,14 @@ import sequelize from "../../config/Database";
 import ExchangeModel from "./ExchangeModel";
 import Category from "./Category";
 import Invitation from "./Invitation";
+import Pairs from "./Pairs";
 
 const models = {
   User: UserModel(sequelize, DataTypes),
   Exchange: ExchangeModel(sequelize, DataTypes),
   Category: Category(sequelize, DataTypes),
   Invitation: Invitation(sequelize, DataTypes),
+  Pairs: Pairs(sequelize, DataTypes),
 };
 
 Object.keys(models).forEach((modelName) => {

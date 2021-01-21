@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createMultipleToAssociate, createOne } from "../utils/ModelUtils";
 import shortid from "shortid";
 import exchangeController from "../controllers/ExchangeController";
+import { sendEmails } from "../utils/email";
 
 const router = Router();
 
@@ -30,11 +31,14 @@ router.post("/exchange", async (req, res) => {
       key,
       idUser,
     });
-    const rightInvitations = names.map((name, index) => {
-      return {
-        name,
-        email: emails[index],
-      };
+    const rightInvitations = [];
+    names.forEach((name, index) => {
+      if (name !== "") {
+        rightInvitations.push({
+          name,
+          email: emails[index],
+        });
+      }
     });
     rightInvitations.push({
       name: userName,
@@ -47,6 +51,8 @@ router.post("/exchange", async (req, res) => {
     );
     await exchange.setInvitations(associateInvitations);
     await exchange.setCategories(category);
+    const invites = rightInvitations.map((invite) => invite.email);
+    await sendEmails(invites, exchange.key);
     res.status(200).send({
       exchange,
     });
@@ -84,6 +90,22 @@ router.get("/exchange/:id", async (req, res) => {
     });
     res.status(200).send({
       exchange,
+    });
+  } catch (e) {
+    console.log(e);
+    res.send(e);
+  }
+});
+
+router.get("/delete/exchange/:id", async (req, res) => {
+  try {
+    const {
+      user: { id: idUser },
+    } = req;
+    const { id } = req.params;
+    await exchangeController.deleteBy(id);
+    res.status(200).send({
+      deleted: true,
     });
   } catch (e) {
     console.log(e);

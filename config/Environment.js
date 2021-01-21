@@ -10,6 +10,7 @@ const config = {
   dbHost: process.env.DB_HOST,
   dbDialect: process.env.DB_DIALECT,
   dbName: process.env.DB_NAME,
+  emailUser: process.env.GMAIL_USER,
 };
 
 export default config;

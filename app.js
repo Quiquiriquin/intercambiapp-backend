@@ -5,6 +5,7 @@ import models from "./src/models";
 import cors from "cors";
 import { refreshTokens } from "./src/utils/tokenUtils";
 import jwt from "jsonwebtoken";
+import cron from "./config/cron";
 
 const verifyToken = async (req, res, next) => {
   console.log(req.headers);
@@ -71,5 +72,7 @@ models.sequelize
     app.listen(config.port, () => {
       console.log(`App is listening on port ${config.port} 🚀`);
     });
+
+    cron();
   })
   .catch((e) => console.log(e));

@@ -24,6 +24,10 @@ export default (sequelize, DataTypes) => {
     key: {
       type: DataTypes.STRING,
     },
+    hasPairs: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   });
 
   Exchange.associate = (models) => {
@@ -39,6 +43,10 @@ export default (sequelize, DataTypes) => {
       through: "ExchangeInvitations",
       foreignKey: "idExchange",
       otherKey: "idInvitation",
+    });
+
+    Exchange.hasMany(models.Pairs, {
+      foreignKey: "idExchange",
     });
   };
 
