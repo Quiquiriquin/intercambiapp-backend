@@ -23,6 +23,8 @@
     "lint-staged": "^10.5.3",
     "lodash": "^4.17.20",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.17",
+    "nodemailer-mailgun-transport": "^2.0.2",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
